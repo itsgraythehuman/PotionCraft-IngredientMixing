@@ -65,9 +65,12 @@ namespace IngredientMixing
 
 		public void Update()
 		{
+			string logText = string.Empty;
+
+
 			if (KeyboardKey.Get(KeyCode.Backslash).State == State.JustDowned)
 			{
-				String logText = "\nSpacingGraphics : Length : CommonPoints : Ratio : Segments : SegmentMax : SegmentMin : Name\n";
+				logText = "\nSpacingGraphics : Length : CommonPoints : Ratio : Segments : SegmentMax : SegmentMin : Name\n";
 
 				foreach (Ingredient ingredient in Ingredient.allIngredients)
 				{
@@ -90,9 +93,11 @@ namespace IngredientMixing
 
 			if (KeyboardKey.Get(KeyCode.Equals).State == State.JustDowned)
 			{
+				logText = "\nLength : CommonPoints : Ratio : Segments : SegmentMax : SegmentMin : Name\n";
+
+
 				CursorManagerSettings asset = Settings<CursorManagerSettings>.Asset;
 				Vector2 vector = Managers.Input.controlsProvider.CurrentMouseWorldPosition + asset.pivotOffset;
-
 
 				List<Stack> stacks = new List<Stack>
 				{
@@ -100,9 +105,33 @@ namespace IngredientMixing
 					Stack.SpawnNewItemStack(vector, Ingredient.GetByName("Windbloom"), Managers.Player.InventoryPanel)
 				};
 
+				stacks.ForEach(stack => stack.overallGrindStatus = 1f);
+
 				Elixer elixer = new Elixer(stacks);
 
 
+				logText += string.Concat
+				(
+					"\n", elixer.Path.MixedPath.Length,
+					"\t", elixer.Path.MixedPath.points.Length,
+					"\t", (elixer.Path.MixedPath.Length / elixer.Path.MixedPath.SegmentsLength.Count).ToString(),
+					"\t", elixer.Path.MixedPath.SegmentsLength.Count,
+					"\t", elixer.Path.MixedPath.SegmentsLength.Max(),
+					"\t", elixer.Path.MixedPath.SegmentsLength.Min(),
+					"\t", "Elixer (Firebell + Windbloom)",
+					"\n", "\n"
+				);
+
+				foreach (Vector3 point in elixer.Path.MixedPath.points)
+				{
+					logText += string.Concat
+					(
+						"\n", point.ToString()
+					);
+				}
+
+
+				debugLog.LogInfo("\n" + logText + "\n");
 			}
 
 		}

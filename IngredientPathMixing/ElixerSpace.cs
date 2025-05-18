@@ -65,8 +65,8 @@ namespace ElixerSpace
 		// Common is whole thing
 		// Main is only the grinded portion
 		// Grinded is what still needs to be grinded
-		public List<IngredientPath> IngredientPaths => Stacks.Select(stack => stack.Ingredient.path).ToList();
-		public List<Stack> Stacks => parentElixer.IngredientStacks;
+		private List<IngredientPath> IngredientPaths => Stacks.Select(stack => stack.Ingredient.path).ToList();
+		private List<Stack> Stacks => parentElixer.IngredientStacks;
 		public EvenlySpacedPoints MixedPath { get; private set; }
 
 
