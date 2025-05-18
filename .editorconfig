@@ -1,0 +1,8 @@
+﻿[*.{cs,vb}]
+
+# IDE0009: Member access should be qualified.
+dotnet_diagnostic.IDE0009.severity = none
+
+# IDE0059: Unnecessary assignment of a value
+dotnet_diagnostic.IDE0059.severity = none
+

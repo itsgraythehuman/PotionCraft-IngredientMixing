@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E593210-CE4C-4707-AB4A-8EC8BA8B338B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IngredientMixing</RootNamespace>
+    <AssemblyName>IngredientMixing</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ElixerSpace.cs" />
+    <Compile Include="IngredientMixing.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.4.23.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>..\Libraries\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>..\Libraries\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\PotionCraft.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.DataBaseSystem">
+      <HintPath>..\Libraries\PotionCraft.DataBaseSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.DebugInfoCollectorSystem">
+      <HintPath>..\Libraries\PotionCraft.DebugInfoCollectorSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.ErrorCatcher">
+      <HintPath>..\Libraries\PotionCraft.ErrorCatcher.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.InputSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\PotionCraft.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.ManagerSystem">
+      <HintPath>..\Libraries\PotionCraft.ManagerSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Scripts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\PotionCraft.Scripts.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.Settings">
+      <HintPath>..\Libraries\PotionCraft.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\Libraries\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) "D:\Program Files (x86)\Steam\steamapps\common\Potion Craft\BepInEx\plugins"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
