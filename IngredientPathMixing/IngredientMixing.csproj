@@ -44,7 +44,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx.Harmony">
+    <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\BepInEx.Harmony.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
@@ -54,27 +55,35 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.Core.dll</HintPath>
     </Reference>
-    <Reference Include="PotionCraft.DataBaseSystem">
+    <Reference Include="PotionCraft.DataBaseSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.DataBaseSystem.dll</HintPath>
     </Reference>
-    <Reference Include="PotionCraft.DebugInfoCollectorSystem">
+    <Reference Include="PotionCraft.DebugInfoCollectorSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.DebugInfoCollectorSystem.dll</HintPath>
     </Reference>
-    <Reference Include="PotionCraft.ErrorCatcher">
+    <Reference Include="PotionCraft.ErrorCatcher, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.ErrorCatcher.dll</HintPath>
     </Reference>
     <Reference Include="PotionCraft.InputSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.InputSystem.dll</HintPath>
     </Reference>
-    <Reference Include="PotionCraft.ManagerSystem">
+    <Reference Include="PotionCraft.ManagerSystem, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.ManagerSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PotionCraft.SceneLoader">
+      <HintPath>..\Libraries\PotionCraft.SceneLoader.dll</HintPath>
     </Reference>
     <Reference Include="PotionCraft.Scripts, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.Scripts.dll</HintPath>
     </Reference>
-    <Reference Include="PotionCraft.Settings">
+    <Reference Include="PotionCraft.Settings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\PotionCraft.Settings.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -85,7 +94,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
+    <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
   </ItemGroup>
