@@ -101,6 +101,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "D:\Program Files (x86)\Steam\steamapps\common\Potion Craft\BepInEx\plugins"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "D:\Program Files (x86)\Steam\steamapps\common\Potion Craft\BepInEx\plugins"
+copy "$(TargetPath)" "$(SolutionDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
