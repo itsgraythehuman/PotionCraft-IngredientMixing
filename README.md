@@ -19,13 +19,14 @@ I would just upload these, but that's kind of illegal to do, so you'll have to d
 In the project's root folder (same place as this README.md file) create a new folder, I called mine "Libraries" but you can call it whatever you want.
 Copy the following .dll's from the game files into that folder.
 
-From the *Potion Craft\BepInEx\core* folder, copy over:
+From the Potion Craft\BepInEx\core folder, copy over:
 	
 	0Harmony.dll
 	BepInEx.dll
 	BepInEx.Harmony.dll
 
-From the *Potion Craft\Potion Craft_Data\Managed* folder, copy over:
+From the Potion Craft\Potion Craft_Data\Managed folder, copy over:
+
 	netstandard.dll
 	PotionCraft.Core.dll
 	PotionCraft.DataBaseSystem.dll
@@ -38,6 +39,7 @@ From the *Potion Craft\Potion Craft_Data\Managed* folder, copy over:
 	UnityEngine.Physics2DModule.dll
 
 There's a 50/50 on whether I'll end up using the following .dll's, but if you run into issues, try copying them over as well:
+
 	PotionCraft.DebugInfoCollectorSystem.dll
 	PotionCraft.ErrorCatcher.dll
 	PotionCraft.SceneLoader.dll
