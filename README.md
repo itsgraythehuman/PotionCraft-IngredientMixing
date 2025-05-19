@@ -20,6 +20,7 @@ In the project's root folder (same place as this README.md file) create a new fo
 Copy the following .dll's from the game files into that folder.
 
 From the *Potion Craft\BepInEx\core* folder, copy over:
+	
 	0Harmony.dll
 	BepInEx.dll
 	BepInEx.Harmony.dll
