@@ -70,6 +70,9 @@ namespace ElixerSpace
 		public EvenlySpacedPoints MixedPath { get; private set; }
 
 
+		private Elixer parentElixer;
+
+
 		public ElixerPath(Elixer elixer)
 		{
 			this.parentElixer = elixer;
@@ -93,18 +96,14 @@ namespace ElixerSpace
 					spacing: path.EvenlySpacedPointsMain.Length / simpleSegments);
 			}
 
-			
+			List<Vector3> zipedList = ZipMerge(IngredientPaths);
 
-			// This is assuming that each path has the same number of points, and each path's points are evenly distributed
-			List<List<Vector3>> listOfLists = IngredientPaths.Select(path
-				=> path.EvenlySpacedPointsMain.points.ToList()).ToList();
 
-			List<Vector3> zipedList = listOfLists.Aggregate((first, second)
-				=> first.Zip(second, (one, two) => one + two).ToList());
+
+
 
 
 			MixedPath = new EvenlySpacedPoints(zipedList);
-
 
 			if (!isRecalc)
 				CalculatePath(true);
@@ -112,9 +111,63 @@ namespace ElixerSpace
 		}
 
 
-		private Elixer parentElixer;
+		// this is a temporary solution
+		private List<Vector3> ZipMerge(List<IngredientPath> pathList)
+		{
+			List<List<Vector3>> listOfLists =
+				pathList.Select(
+					path => path.EvenlySpacedPointsMain.points.ToList()
+				).ToList();
 
-		
+			List<Vector3> zipedList =
+				listOfLists.Aggregate(
+					(first, second) =>
+						first.Zip(second, (one, two) => one + two).ToList()
+				).ToList();
+
+			return zipedList;
+		}
+
+		// this is the beter solution (WIP)
+		private List<Vector3> SortedMerge(List<IngredientPath> pathList)
+		{
+			List<List<Vector3>> listOfLists = pathList.Select(
+				path => path.EvenlySpacedPointsMain.points.ToList()).ToList();
+
+			// filled with 1
+			List<int> indexes = Enumerable.Repeat(1, pathList.Count).ToList();
+			// filled with 0f
+			List<float> currentLengths = new List<float>(new float[pathList.Count]);
+
+			List<List<Vector3>> offsetLists =
+				pathList.Select(
+					path =>
+						Enumerable.Zip(
+							first: path.EvenlySpacedPointsMain.points.ToList().GetRange(0, path.EvenlySpacedPointsMain.points.Length - 1),
+							second: path.EvenlySpacedPointsMain.points.ToList().GetRange(1, path.EvenlySpacedPointsMain.points.Length - 1),
+							(one, two) => two - one
+						).ToList()
+				).ToList();
+
+			
+
+			(int index, float parametric, float currentLength, float maxLength) tmp;
+
+
+			List<Vector3> sortedOffsets = new List<Vector3>() { Vector3.zero };
+
+
+			while (true)
+			{
+
+			}
+
+
+
+			return new List<Vector3>();
+		}
+
+
 	}
 
 

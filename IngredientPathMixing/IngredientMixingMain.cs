@@ -11,12 +11,22 @@ using UnityEngine;
 using PotionCraft.ObjectBased.Stack;
 using System.Collections.Generic;
 using ElixerSpace;
+using System.Security.Permissions;
+using System.Security;
+
+using Logger = BepInEx.Logging.Logger;
+
+
+// Idk if this will be useful, but it is here for now
+#pragma warning disable CS0618
+[module: UnverifiableCode]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 
 namespace IngredientMixing
 {
 	[BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
-	public class IngredientMixing : BaseUnityPlugin
+	public class IngredientMixingMain : BaseUnityPlugin
 	{
 		public const string PLUGIN_GUID = "game.itsgraytheguman.potioncraft.ingredientmixing";
 		public const string PLUGIN_NAME = "Ingredient Mixing";
@@ -58,8 +68,8 @@ namespace IngredientMixing
 
 		public DebugHelper()
 		{
-			debugLog = BepInEx.Logging.Logger.CreateLogSource("DebugLog");
-			debugLog.LogInfo("DebugLog created");
+			debugLog = Logger.CreateLogSource("ElixerLog");
+			debugLog.LogInfo("Elixer Debug Log created");
 		}
 
 
@@ -93,7 +103,7 @@ namespace IngredientMixing
 
 			if (KeyboardKey.Get(KeyCode.Equals).State == State.JustDowned)
 			{
-				logText = "\nLength : CommonPoints : Ratio : Segments : SegmentMax : SegmentMin : Name\n";
+				logText = "\nLength : MainPoints : Ratio : Segments : SegmentMax : SegmentMin : Name\n";
 
 
 				CursorManagerSettings asset = Settings<CursorManagerSettings>.Asset;
@@ -102,23 +112,68 @@ namespace IngredientMixing
 				List<Stack> stacks = new List<Stack>
 				{
 					Stack.SpawnNewItemStack(vector, Ingredient.GetByName("Firebell"), Managers.Player.InventoryPanel),
-					Stack.SpawnNewItemStack(vector, Ingredient.GetByName("Windbloom"), Managers.Player.InventoryPanel)
+					Stack.SpawnNewItemStack(vector, Ingredient.GetByName("Terraria"), Managers.Player.InventoryPanel)
 				};
 
 				stacks.ForEach(stack => stack.overallGrindStatus = 1f);
 
-				Elixer elixer = new Elixer(stacks);
+
+				logText += string.Concat
+				(
+					"\n", "\n",
+					"\n", stacks[0].Ingredient.path.EvenlySpacedPointsMain.Length,
+					"\t", stacks[0].Ingredient.path.EvenlySpacedPointsMain.points.Length,
+					"\t", (stacks[0].Ingredient.path.EvenlySpacedPointsMain.Length / stacks[0].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Count).ToString(),
+					"\t", stacks[0].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Count,
+					"\t", stacks[0].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Max(),
+					"\t", stacks[0].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Min(),
+					"\t", "Firebell",
+					"\n", "\n"
+				);
+
+				foreach (Vector3 point in stacks[0].Ingredient.path.EvenlySpacedPointsMain.points)
+				{
+					logText += string.Concat
+					(
+						"\n", point.ToString()
+					);
+				}
 
 
 				logText += string.Concat
 				(
+					"\n", "\n",
+					"\n", stacks[1].Ingredient.path.EvenlySpacedPointsMain.Length,
+					"\t", stacks[1].Ingredient.path.EvenlySpacedPointsMain.points.Length,
+					"\t", (stacks[1].Ingredient.path.EvenlySpacedPointsMain.Length / stacks[1].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Count).ToString(),
+					"\t", stacks[1].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Count,
+					"\t", stacks[1].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Max(),
+					"\t", stacks[1].Ingredient.path.EvenlySpacedPointsMain.SegmentsLength.Min(),
+					"\t", "Terraria",
+					"\n", "\n"
+				);
+
+				foreach (Vector3 point in stacks[1].Ingredient.path.EvenlySpacedPointsMain.points)
+				{
+					logText += string.Concat
+					(
+						"\n", point.ToString()
+					);
+				}
+
+
+				Elixer elixer = new Elixer(stacks);
+
+				logText += string.Concat
+				(
+					"\n", "\n",
 					"\n", elixer.Path.MixedPath.Length,
 					"\t", elixer.Path.MixedPath.points.Length,
 					"\t", (elixer.Path.MixedPath.Length / elixer.Path.MixedPath.SegmentsLength.Count).ToString(),
 					"\t", elixer.Path.MixedPath.SegmentsLength.Count,
 					"\t", elixer.Path.MixedPath.SegmentsLength.Max(),
 					"\t", elixer.Path.MixedPath.SegmentsLength.Min(),
-					"\t", "Elixer (Firebell + Windbloom)",
+					"\t", "Elixer (Firebell + Terraria)",
 					"\n", "\n"
 				);
 
